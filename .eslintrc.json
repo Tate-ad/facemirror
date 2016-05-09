@@ -1,0 +1,17 @@
+{
+  "parserOptions":{
+    "sourceType": "module"
+  },
+  "root": true,
+  "rules": {
+    "curly": "error"
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "global": {
+    "exports": true,
+    "module.exports": true
+  }
+}
