@@ -57,6 +57,12 @@ Face.prototype.config = function(opt) {
   return this;
 };
 
+
+/**
+ * add property to Face instance
+ *
+ * @returns {this}
+ */
 Face.prototype.use = function(fn){
   var self = this;
   if(typeof fn !== 'function'){
@@ -66,6 +72,10 @@ Face.prototype.use = function(fn){
   return self;
 }
 
+/*
+ * Face private get method
+ * @returns {customer http get}
+ */
 Face.prototype.get = function(url){
   return request
     .get(url)
@@ -73,12 +83,21 @@ Face.prototype.get = function(url){
     .query({api_secret: this._api_secret});
 }
 
+/*
+ * Face private get method
+ * @returns {customer http post}
+ */
+
 Face.prototype.post = function(url){
   return request
     .post(url)
     .query({api_key: this._api_key})
     .query({api_secret: this._api_secret});
 }
+
+/*
+ * add url map to the Face instance
+ */
 
 Face.prototype._parseUrl = function(){
   var self = this;
