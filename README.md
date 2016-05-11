@@ -15,5 +15,5 @@ face.detection.detect('http://pic.mmfile.net/2013/08/131T954O-5.jpg', {},
     function(err, data){
     if(err) console.log(err);
     console.log(data);
-    })
+    });
 ```
