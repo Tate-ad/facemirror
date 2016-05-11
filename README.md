@@ -8,6 +8,6 @@ var face = require('facemirror');
 face.config({
   api_key: 'YOUR_KEY',
   api_secret: 'YOU_SECRET',
-  country: 'china' ('china' or 'us')
+  country: 'china' // ('china' or 'us')
 });
 ```
