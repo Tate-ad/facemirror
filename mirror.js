@@ -28,8 +28,8 @@ function Face() {
   this._urlmap = {};
 }
 
- /* Face 继承自 EventEmitter */
- util.inherits(Face, EventEmitter);
+/* Face 继承自 EventEmitter */
+util.inherits(Face, EventEmitter);
 
 /**
  * 配置Face 实例对象
@@ -63,10 +63,10 @@ Face.prototype.config = function(opt) {
  *
  * @returns {this}
  */
-Face.prototype.use = function(fn){
+Face.prototype.use = function(fn) {
   var self = this;
-  if(typeof fn !== 'function'){
-    fn  = new Function();
+  if (typeof fn !== 'function') {
+    fn = new Function();
   }
   fn(self);
   return self;
@@ -76,11 +76,15 @@ Face.prototype.use = function(fn){
  * Face private get method
  * @returns {customer http get}
  */
-Face.prototype.get = function(url){
+Face.prototype.get = function(url) {
   return request
     .get(url)
-    .query({api_key: this._api_key})
-    .query({api_secret: this._api_secret});
+    .query({
+      api_key: this._api_key
+    })
+    .query({
+      api_secret: this._api_secret
+    });
 }
 
 /*
@@ -88,22 +92,26 @@ Face.prototype.get = function(url){
  * @returns {customer http post}
  */
 
-Face.prototype.post = function(url){
+Face.prototype.post = function(url) {
   return request
     .post(url)
-    .query({api_key: this._api_key})
-    .query({api_secret: this._api_secret});
+    .query({
+      api_key: this._api_key
+    })
+    .query({
+      api_secret: this._api_secret
+    });
 }
 
 /*
  * add url map to the Face instance
  */
 
-Face.prototype._parseUrl = function(){
+Face.prototype._parseUrl = function() {
   var self = this;
-  Object.keys(urlMap).forEach(function(item){
+  Object.keys(urlMap).forEach(function(item) {
     self._urlmap[item] = {};
-    urlMap[item].forEach(function(t){
+    urlMap[item].forEach(function(t) {
       self._urlmap[item][t] = self._ser_url + item + '/' + t;
     });
   });
@@ -112,16 +120,17 @@ Face.prototype._parseUrl = function(){
 
 var face = new Face();
 
-face.on('config', function(){
+face.on('config', function() {
   face
-  ._parseUrl()
-  .use(require('./lib/detection')(face))
-  .use(require('./lib/faceset')(face))
-  .use(require('./lib/group')(face))
-  .use(require('./lib/info')(face))
-  .use(require('./lib/person')(face))
-  .use(require('./lib/recognition')(face))
-  .use(require('./lib/train')(face));
+    ._parseUrl()
+    .use(require('./lib/detection')(face))
+    .use(require('./lib/faceset')(face))
+    .use(require('./lib/group')(face))
+    .use(require('./lib/info')(face))
+    .use(require('./lib/person')(face))
+    .use(require('./lib/recognition')(face))
+    .use(require('./lib/train')(face));
 });
 
 exports = module.exports = face;
+
