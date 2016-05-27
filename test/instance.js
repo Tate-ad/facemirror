@@ -2,12 +2,9 @@ var assert = require('assert');
 var should = require('should');
 var path = require('path');
 
-var config = require('./config.json');
-
+var config = require('./config/config.json');
 var fyt = require('../mirror');
-
 var image_url = 'http://pic.mmfile.net/2013/08/131T954O-5.jpg';
-
 var country = 'china';
 var filepath = './liudehua.jpg';
 
@@ -52,7 +49,6 @@ describe('#First test', function() {
       if(err) {
         console.log(err);
       }
-      console.log("<<just call test>>");
       done();
     });
   });
